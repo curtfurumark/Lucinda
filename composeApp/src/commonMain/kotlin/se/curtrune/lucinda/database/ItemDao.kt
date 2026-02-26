@@ -1,11 +1,13 @@
 package se.curtrune.lucinda.database
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 import se.curtrune.lucinda.data.Item
 
+@Dao
 interface ItemDao {
     @Upsert
     suspend fun upsert(item: Item)

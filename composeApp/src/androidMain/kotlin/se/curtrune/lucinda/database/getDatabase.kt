@@ -3,6 +3,8 @@ package se.curtrune.lucinda.database
 import android.content.Context
 import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import se.curtrune.lucinda.database.ItemDatabase
+
 
 fun getDatabase(context: Context): ItemDatabase {
     val dbFile = context.getDatabasePath("items.db").absolutePath
@@ -10,5 +12,4 @@ fun getDatabase(context: Context): ItemDatabase {
         context.applicationContext,
         name = dbFile,
     ).setDriver(BundledSQLiteDriver()).build()
-
 }

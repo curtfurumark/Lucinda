@@ -24,6 +24,6 @@ import se.curtrune.lucinda.database.ItemDao
 @Preview
 fun App(dao: ItemDao) {
     MaterialTheme {
-        TodoScreen()
+        TodoScreen(dao)
     }
 }
