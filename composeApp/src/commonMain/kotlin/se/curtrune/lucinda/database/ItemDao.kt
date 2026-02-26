@@ -5,15 +5,16 @@ import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
-import se.curtrune.lucinda.Item
+import se.curtrune.lucinda.data.Item
 
 @Dao
 interface ItemDao {
-    @Query("SELECT * FROM item")
-    fun getAll(): Flow<List<Item>>
-    @Delete
-    suspend fun delete(item: Item)
     @Upsert
     suspend fun upsert(item: Item)
+    @Delete
+    suspend fun delete(item: Item)
+
+    @Query("SELECT * FROM item ORDER BY dateEpoch ASC")
+    fun getItems(): Flow<List<Item>>
 
 }
