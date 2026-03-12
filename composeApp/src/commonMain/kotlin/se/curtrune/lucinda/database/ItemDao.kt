@@ -14,7 +14,7 @@ interface ItemDao {
     @Delete
     suspend fun delete(item: Item)
 
-    @Query("SELECT * FROM item ORDER BY dateEpoch ASC")
+    @Query("SELECT * FROM item ORDER BY targetDate ASC")
     fun getItems(): Flow<List<Item>>
 
 }

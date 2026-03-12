@@ -14,6 +14,7 @@ composeMultiplatform = "1.10.1"
 junit = "4.13.2"
 kotlin = "2.3.10"
 kotlinx-coroutines = "1.10.2"
+kotlinxDatetime = "0.7.1"
 material3 = "1.10.0-alpha05"
 
 room = "2.8.4"
@@ -23,6 +24,7 @@ material = "1.13.0"
 composeBom = "2026.02.00"
 
 [libraries]
+jetbrains-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -42,10 +44,8 @@ androidx-compose-ui-tooling = {group= "androidx.compose.ui", name= "ui-tooling"}
 androidx-compose-ui = {group= "androidx.compose.ui", name= "ui"}
 androidx-compose-ui-graphics = {group= "androidx.compose.ui", name= "ui-graphics"}
 androidx-compose-material3 = {group= "androidx.compose.material3", name= "material3"}
-
-
-
-
+#date time stuff
+kotlinx-datetime = {group= "org.jetbrains.kotlinx.datetime", name= "kotlinx-datetime"}
 
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
 compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
