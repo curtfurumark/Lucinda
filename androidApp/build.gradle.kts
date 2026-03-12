@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.sqlite.bundled)
 
-
+    //hwimplementation(libs.k)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
