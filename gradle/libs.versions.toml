@@ -1,9 +1,6 @@
 [versions]
-<<<<<<< HEAD
-agp = "9.0.0"
-=======
-agp = "9.0.1"
->>>>>>> 8f54295ff8ab5eae1d25702cc30f1df0b1835f78
+
+agp = "9.1.0"
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"

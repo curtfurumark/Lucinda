@@ -8,7 +8,6 @@ import se.curtrune.lucinda.database.ItemDao
 import se.curtrune.lucinda.screens.todo.TodoScreen
 
 @Composable
-@Preview
 fun App(dao: ItemDao) {
     MaterialTheme {
         TodoScreen(dao)

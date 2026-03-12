@@ -10,7 +10,7 @@ import se.curtrune.lucinda.data.Item
 @Dao
 interface ItemDao {
     @Upsert
-    suspend fun upsert(item: Item)
+    suspend fun upsert(item: se.curtrune.lucinda.Item)
     @Delete
     suspend fun delete(item: Item)
 
