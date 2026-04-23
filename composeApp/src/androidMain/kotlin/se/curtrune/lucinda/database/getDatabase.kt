@@ -11,5 +11,6 @@ fun getDatabase(context: Context): ItemDatabase {
     return Room.databaseBuilder<ItemDatabase>(
         context.applicationContext,
         name = dbFile,
-    ).setDriver(BundledSQLiteDriver()).build()
+    )
+        .setDriver(BundledSQLiteDriver()).fallbackToDestructiveMigration(true).build()
 }

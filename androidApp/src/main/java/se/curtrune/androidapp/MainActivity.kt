@@ -6,9 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import se.curtrune.lucinda.App
 import se.curtrune.lucinda.database.getDatabase
+import se.curtrune.lucinda.screens.todo.TodoViewModel
 
 //import se.curtrune.lucinda.database.getDatabase
 
@@ -25,7 +27,10 @@ class MainActivity : ComponentActivity() {
             //Text(text = "hello android")
             val db = getDatabase(applicationContext)
             val dao = db.dao
-            App(dao)
+            val viewModel = remember {
+                TodoViewModel(dao)
+            }
+            App(viewModel)
         }
     }
 }

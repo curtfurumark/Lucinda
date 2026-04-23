@@ -13,7 +13,7 @@ plugins {
 
 kotlin {
 
-    androidLibrary {
+    android {
         compileSdk = 36
         minSdk = 26
         namespace = "se.curtrune.lucinda.composeapp"
@@ -46,6 +46,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.kotlinx.serialization.json)
             //room
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)

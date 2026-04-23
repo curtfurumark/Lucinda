@@ -2,4 +2,6 @@ package se.curtrune.lucinda.screens.todo
 
 import se.curtrune.lucinda.data.Item
 
-data class TodoState(val items: List<Item> = emptyList())
+sealed interface TodoEvent {
+    class InsertItem(val item: Item): TodoEvent
+}

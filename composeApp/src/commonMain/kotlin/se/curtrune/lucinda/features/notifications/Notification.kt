@@ -1,10 +1,10 @@
 package se.curtrune.lucinda.features.notifications
 
-import se.curtrune.lucy.util.Converter
-import se.curtrune.lucy.util.Logger.Companion.log
-import java.time.LocalDate
-import java.time.LocalTime
-import java.util.Locale
+import androidx.compose.ui.text.intl.Locale
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
+import kotlin.jvm.JvmField
+
 
 @kotlinx.serialization.Serializable
 class Notification {
@@ -13,7 +13,7 @@ class Notification {
     }
 
     @JvmField
-    var type: Type
+    var type: Type = Type.NOTIFICATION
     private var date: Long = 0
     private var time = 0
     @JvmField
@@ -21,25 +21,20 @@ class Notification {
     @JvmField
     var content: String? = null
 
-    init {
-        if (VERBOSE) log("Notification()")
-        type = Type.NOTIFICATION
-    }
-
     fun getDate(): LocalDate {
-        return LocalDate.ofEpochDay(date)
+        return LocalDate.fromEpochDays(date)
     }
 
     fun getTime(): LocalTime {
-        return LocalTime.ofSecondOfDay(time.toLong())
+        return LocalTime.fromSecondOfDay(time)
     }
 
     fun setDate(date: LocalDate) {
-        this.date = date.toEpochDay()
+        this.date = date.toEpochDays()
     }
 
-    fun setDate(string: String?) {
-        date = LocalDate.parse(string).toEpochDay()
+    fun setDate(string: CharSequence) {
+        date = LocalDate.parse(string).toEpochDays()
     }
 
 
@@ -47,19 +42,15 @@ class Notification {
         this.time = time.toSecondOfDay()
     }
 
-    fun setTime(string: String?) {
+    fun setTime(string: CharSequence) {
         time = LocalTime.parse(string).toSecondOfDay()
     }
 
 
     override fun toString(): String {
-        return String.format(
-            Locale.getDefault(),
-            "%s %s %s",
-            type.toString(),
-            getDate().toString(),
-            Converter.format(getTime())
-        )
+        return "$type.toString(), ${getDate()}"
+            //Converter.format(getTime())
+
     }
 
     companion object {

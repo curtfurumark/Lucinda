@@ -8,13 +8,16 @@ import se.curtrune.lucinda.data.Item
 
 @Database(
     entities = [Item::class],
-    version = 3,
+    version = 4,
     autoMigrations = [
-        AutoMigration(from = 2, to = 3)
+        AutoMigration(
+            from = 1, to = 4,
+            spec = ItemAutoMigrationSpec::class
+        )
     ]
 )
 @TypeConverters(RoomConverters::class)
-abstract class ItemDatabase: RoomDatabase() {
+abstract class ItemDatabase : RoomDatabase() {
     abstract val dao: ItemDao
 
 }

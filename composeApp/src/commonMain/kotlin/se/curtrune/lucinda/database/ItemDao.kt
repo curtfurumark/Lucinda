@@ -10,11 +10,11 @@ import se.curtrune.lucinda.data.Item
 @Dao
 interface ItemDao {
     @Upsert
-    suspend fun upsert(item: se.curtrune.lucinda.Item)
+    suspend fun upsert(item: Item)
     @Delete
     suspend fun delete(item: Item)
 
-    @Query("SELECT * FROM item ORDER BY targetDate ASC")
+    @Query("SELECT * FROM item ORDER BY targetDate")
     fun getItems(): Flow<List<Item>>
 
 }

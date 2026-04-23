@@ -6,10 +6,11 @@ import androidx.compose.ui.tooling.preview.Preview
 
 import se.curtrune.lucinda.database.ItemDao
 import se.curtrune.lucinda.screens.todo.TodoScreen
+import se.curtrune.lucinda.screens.todo.TodoViewModel
 
 @Composable
-fun App(dao: ItemDao) {
+fun App(viewModel: TodoViewModel) {
     MaterialTheme {
-        TodoScreen(dao)
+        TodoScreen(viewModel)
     }
 }
