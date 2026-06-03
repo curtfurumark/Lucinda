@@ -30,9 +30,9 @@ data class Item(
     @ColumnInfo(defaultValue = "0")
     val modified: LocalDateTime = rightNow(),
     @ColumnInfo(defaultValue = "-1")
-    val targetTime: LocalTime = rightNow().time,
+    var targetTime: LocalTime = rightNow().time,
     @ColumnInfo(defaultValue = "-1")
-    val targetDate: LocalDate = rightNow().date,
+    var targetDate: LocalDate = rightNow().date,
     @ColumnInfo(defaultValue = "false")
     var isCalendar: Boolean = false,
     @ColumnInfo(defaultValue = "false")

@@ -39,6 +39,7 @@ fun TodoScreen(viewModel: TodoViewModel) {
             }
         }
     }
+
     if (showDialog) {
         InsertItemDialog(
             onCancel = { showDialog = false },
@@ -48,7 +49,6 @@ fun TodoScreen(viewModel: TodoViewModel) {
             })
     }
 }
-
 @Composable
 fun ItemCard(item: Item) {
     Card(modifier = Modifier.fillMaxWidth()) {

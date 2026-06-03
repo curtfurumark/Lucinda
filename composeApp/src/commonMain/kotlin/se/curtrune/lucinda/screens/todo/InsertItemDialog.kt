@@ -20,11 +20,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import se.curtrune.lucinda.composables.cards.DateCard
+import se.curtrune.lucinda.composables.cards.TimeCard
 import se.curtrune.lucinda.data.Item
 
 @Composable
 fun InsertItemDialog(onCancel: () -> Unit, onConfirm: (Item) -> Unit) {
     var text by remember { mutableStateOf("") }
+    val item by remember { mutableStateOf(Item()) }
     Dialog(onDismissRequest = { onCancel() }) {
         Surface(
             modifier = Modifier.fillMaxWidth(),
@@ -41,6 +44,15 @@ fun InsertItemDialog(onCancel: () -> Unit, onConfirm: (Item) -> Unit) {
                     label = { Text("Heading") },
                     modifier = Modifier.fillMaxWidth()
                 )
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    TimeCard(
+                        item = item,
+                        onTimeChanged = { item.targetTime = it })
+                    DateCard(
+                        item = item,
+                        onDateChanged = { item.targetDate = it })
+                }
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
