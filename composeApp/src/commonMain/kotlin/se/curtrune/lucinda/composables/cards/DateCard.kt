@@ -12,17 +12,19 @@ import androidx.compose.ui.Modifier
 import kotlinx.datetime.LocalDate
 import se.curtrune.lucinda.composables.dialogs.DatePickerDialog
 import se.curtrune.lucinda.data.Item
+import se.curtrune.lucinda.util.DateTimeFormatter
 
 @Composable
 fun DateCard(item: Item, onDateChanged: (LocalDate) -> Unit) {
     var showDateDialog by remember { mutableStateOf(false) }
     Card {
         Text(
-            text = item.targetDate.toString(),
+            text = DateTimeFormatter.formatLocalDate(item.targetDate),
             modifier = Modifier.clickable(onClick = { showDateDialog = true })
         )
 
     }
+
     if (showDateDialog) {
         DatePickerDialog(
             onDismiss = { showDateDialog = false },

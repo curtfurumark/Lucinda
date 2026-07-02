@@ -1,11 +1,10 @@
 package se.curtrune.lucinda.screens.todo
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Card
+
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,7 +16,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import se.curtrune.lucinda.data.Item
+import se.curtrune.lucinda.composables.cards.ItemCard
+
 
 @Composable
 fun TodoScreen(viewModel: TodoViewModel) {
@@ -31,12 +31,23 @@ fun TodoScreen(viewModel: TodoViewModel) {
                 Text("Add")
             }
         }) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Spacer(modifier = Modifier.height(100.dp))
 
-            state.items.forEach {
-                ItemCard(it)
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
             }
+            items(state.items.size) {
+                ItemCard(
+                    item = state.items[it],
+                    onChanged = { item ->
+                        viewModel.onEvent(TodoEvent.UpdateItem(item))
+                    })
+
+                Spacer(modifier = Modifier.height(2.dp))
+
+            }
+
+
         }
     }
 
@@ -49,11 +60,4 @@ fun TodoScreen(viewModel: TodoViewModel) {
             })
     }
 }
-@Composable
-fun ItemCard(item: Item) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Text(text = item.heading)
-        Text(text = item.created.toString())
-        Text(text = item.modified.toString())
-    }
-}
+

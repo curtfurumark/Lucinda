@@ -58,6 +58,6 @@ data class Item(
 
 
 fun rightNow(): LocalDateTime {
-    return Clock.System.now().toLocalDateTime(timeZone = TimeZone.UTC)
+    return Clock.System.now().toLocalDateTime(timeZone = TimeZone.currentSystemDefault())
 }
 

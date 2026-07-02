@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import se.curtrune.lucinda.data.Item
 import se.curtrune.lucinda.database.ItemDao
-import kotlin.time.Clock
+
 
 class TodoViewModel(private val dao: ItemDao) : ViewModel() {
     private val _state = MutableStateFlow(TodoState())
@@ -27,12 +27,20 @@ class TodoViewModel(private val dao: ItemDao) : ViewModel() {
             .launchIn(viewModelScope)
     }
 
-    fun onEvent(event: TodoEvent){
-        when(event){
+    fun onEvent(event: TodoEvent) {
+        when (event) {
             is TodoEvent.InsertItem -> insert(event.item)
+            is TodoEvent.UpdateItem -> update(event.item)
         }
     }
+
     fun insert(item: Item) {
+        viewModelScope.launch {
+            dao.upsert(item)
+        }
+    }
+
+    fun update(item: Item) {
         viewModelScope.launch {
             dao.upsert(item)
         }

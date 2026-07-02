@@ -48,6 +48,7 @@ fun InsertItemDialog(onCancel: () -> Unit, onConfirm: (Item) -> Unit) {
                     TimeCard(
                         item = item,
                         onTimeChanged = { item.targetTime = it })
+                    Spacer(modifier = Modifier.width(8.dp))
                     DateCard(
                         item = item,
                         onDateChanged = { item.targetDate = it })

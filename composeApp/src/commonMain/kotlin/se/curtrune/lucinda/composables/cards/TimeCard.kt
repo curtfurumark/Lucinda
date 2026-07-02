@@ -12,13 +12,14 @@ import androidx.compose.ui.Modifier
 import kotlinx.datetime.LocalTime
 import se.curtrune.lucinda.composables.dialogs.TimePickerDialog
 import se.curtrune.lucinda.data.Item
+import se.curtrune.lucinda.util.DateTimeFormatter
 
 @Composable
 fun TimeCard(item: Item, onTimeChanged: (LocalTime) -> Unit) {
     var showTimeDialog by remember { mutableStateOf(false) }
     Card {
         Text(
-            text = item.targetTime.toString(),
+            text = DateTimeFormatter.format(item.targetTime),
             modifier = Modifier.clickable(onClick = { showTimeDialog = true })
         )
 
