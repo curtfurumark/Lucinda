@@ -20,4 +20,10 @@ import se.curtrune.lucinda.data.Item
 abstract class ItemDatabase : RoomDatabase() {
     abstract val dao: ItemDao
 
+    companion object {
+        lateinit var INSTANCE: ItemDatabase
+        fun getDatabase(): ItemDatabase {
+            return INSTANCE
+        }
+    }
 }
