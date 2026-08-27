@@ -8,15 +8,25 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
 import kotlinx.serialization.Serializable
 import se.curtrune.lucinda.database.ItemDatabase
+import se.curtrune.lucinda.screens.day.DayScreen
 import se.curtrune.lucinda.screens.index.IndexScreen
+import se.curtrune.lucinda.screens.month.MonthScreen
 import se.curtrune.lucinda.screens.todo.TodoScreen
 import se.curtrune.lucinda.screens.todo.TodoViewModel
+import se.curtrune.lucinda.screens.week.WeekScreen
 
-sealed interface Route : NavKey {
+sealed interface Route :
+    NavKey {
     @Serializable
     data object TodoNavKey : Route
     @Serializable
     data object IndexNavKey : Route
+    @Serializable
+    data object DayNavKey : Route
+    @Serializable
+    data object WeekNavKey : Route
+    @Serializable
+    data object MonthNavKey : Route
 }
 
 
@@ -33,6 +43,19 @@ fun NavigationRoot(
 
             is Route.IndexNavKey -> NavEntry(navKey) {
                 IndexScreen(navigate = { backStack.add(it) })
+            }
+
+            is Route.DayNavKey -> NavEntry(navKey) {
+                DayScreen()
+
+            }
+
+            is Route.WeekNavKey -> NavEntry(navKey) {
+                WeekScreen()
+            }
+
+            is Route.MonthNavKey -> NavEntry(navKey) {
+                MonthScreen()
             }
 
             else -> error("Unknown navKey: $navKey")
