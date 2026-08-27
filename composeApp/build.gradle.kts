@@ -15,7 +15,7 @@ plugins {
 kotlin {
 
     android {
-        compileSdk = 36
+        compileSdk = 37
         minSdk = 26
         namespace = "se.curtrune.lucinda.composeapp"
         experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true

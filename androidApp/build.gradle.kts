@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "se.curtrune.androidapp"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     buildFeatures{
@@ -46,7 +46,6 @@ dependencies {
     implementation(project(":composeApp"))
     implementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)

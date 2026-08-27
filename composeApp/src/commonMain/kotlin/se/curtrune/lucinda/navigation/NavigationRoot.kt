@@ -8,12 +8,15 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
 import kotlinx.serialization.Serializable
 import se.curtrune.lucinda.database.ItemDatabase
+import se.curtrune.lucinda.screens.index.IndexScreen
 import se.curtrune.lucinda.screens.todo.TodoScreen
 import se.curtrune.lucinda.screens.todo.TodoViewModel
 
 sealed interface Route : NavKey {
     @Serializable
     data object TodoNavKey : Route
+    @Serializable
+    data object IndexNavKey : Route
 }
 
 
@@ -26,6 +29,10 @@ fun NavigationRoot(
         when (navKey) {
             is Route.TodoNavKey -> NavEntry(navKey) {
                 TodoScreen(viewModel = TodoViewModel(ItemDatabase.getDatabase().dao))
+            }
+
+            is Route.IndexNavKey -> NavEntry(navKey) {
+                IndexScreen(navigate = { backStack.add(it) })
             }
 
             else -> error("Unknown navKey: $navKey")
