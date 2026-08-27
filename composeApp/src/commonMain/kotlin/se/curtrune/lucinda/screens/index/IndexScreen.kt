@@ -23,11 +23,13 @@ fun IndexScreen(navigate: (NavKey) -> Unit) {
         }
         )
         )
+
         Text("Day", modifier = Modifier.clickable(onClick = {
             navigate(Route.DayNavKey)
         }
         )
         )
+
         Text("Week", modifier = Modifier.clickable(onClick = {
             navigate(Route.WeekNavKey)
         }
